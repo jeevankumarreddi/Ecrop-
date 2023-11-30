@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script th:src="@{/js/scripts.js}"></script>
+	<title>employeeprofile</title>
+</head>
+<body>
+	<div th:replace="home :: content"></div>
+	<div class="container-fluid header-design-login">
+		<div class="row justify-content-center align-items-center" style="height: 10vh;">
+			<div class="webland-container">
+				<form th:object="${employee}" th:action="@{/employeeprofile}" method="post">
+					<h5>Employee Profile</h5>
+					<br>
+					<div class="mb-3">
+						<label for="code">Employee Code:</label>
+						<input type="text" id="empcode" name="emp_code" required>
+					</div>
+					<div class="mb-3">
+						<label for="name">Employee Name:</label>
+						<input type="text" id="empname" name="emp_name" required>
+					</div>
+					<div class="mb-3">
+						<label name="box">Designation:</label>
+						<select name="box" class="box" aria-label="Designation" required>
+							<option value="" disabled selected>---Select option---</option>
+							<option value="1">VAA</option>
+							<option value="2">VHA</option>
+							<option value="3">VSA</option>
+							<option value="4">AEO</option>
+							<option value="5">MPEO</option>
+							<option value="6">VFA</option>
+							<option value="7">ATM</option>
+							<option value="8">BTM</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="name">Email:</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					<div class="mb-3">
+						<label for="name">Aadhaar:</label>
+						<input type="text" data-type="aadhaar" name="aadhaar_id" maxLength="12" required >
+					</div>
+					<div class="mb-3">
+						<label for="name">mobile:</label>
+						<input type="text" data-type="mobileNo" name="mobile" id="mbNo" maxLength="10"required onchange="validMobileNumber()">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">ADD</button>
+
+					<div>
+						<span th:utext="${msg}"></span>
+<!--						<span th:utext="${mobilemsg}"></span>-->
+						
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
